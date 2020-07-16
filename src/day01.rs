@@ -11,31 +11,23 @@
  * What is the sum of the fuel requirements for all of the modules on your spacecraft?
  *
  */
-fn main() {
+pub fn solve() {
     let input = load_input();
-    let result = calculate_requirement(input);
-    println!("Result is {}", result);
-}
-
-fn load_input() -> String {
-    let input: String = std::fs::read_to_string("./data/input").unwrap();
-    return input;
-}
-
-fn calculate_requirement(input : String) -> i32 {
-    let mut total = 0;
-
-    for line in input.lines() {
-        let requirement = fuel_requirement_for_module(line);
-        println!("{}", requirement);
-        total = total + requirement;
-    }
-
-    return total;
+    let result_part1 = calculate_part1(input);
+    println!("Part 1 result is {}", result_part1);
+    assert!(result_part1 == 3423279);
 }
 
 /**
- * Given a module (a line of our input in string format), convert to i32 and calculate the fuel
+ * Load our input data from file as string
+ */
+fn load_input() -> String {
+    let input: String = std::fs::read_to_string("./data/input01").unwrap();
+    return input;
+}
+
+/**
+ * Given a module (a line of our input01 in string format), convert to i32 and calculate the fuel
  * requirement before returning the result as i32.
  */
 fn fuel_requirement_for_module(module_mass: &str) -> i32 {
@@ -45,4 +37,19 @@ fn fuel_requirement_for_module(module_mass: &str) -> i32 {
     };
 
     return mass / 3 - 2;
+}
+
+/**
+ * Loop through lines on input01 data and gather the total requirement from sum of each.
+ */
+fn calculate_part1(input : String) -> i32 {
+    let mut total = 0;
+
+    for line in input.lines() {
+        let requirement = fuel_requirement_for_module(line);
+        println!("{}", requirement);
+        total = total + requirement;
+    }
+
+    return total;
 }
