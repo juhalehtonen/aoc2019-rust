@@ -11,19 +11,10 @@
  * What is the sum of the fuel requirements for all of the modules on your spacecraft?
  *
  */
-pub fn solve() {
-    let input = load_input();
-    let result_part1 = calculate_part1(input);
+pub fn solve(input : String) {
+    let result_part1 = solve_part1(input);
     println!("Part 1 result is {}", result_part1);
-    assert!(result_part1 == 3423279);
-}
-
-/**
- * Load our input data from file as string
- */
-fn load_input() -> String {
-    let input: String = std::fs::read_to_string("./data/input01").unwrap();
-    return input;
+    assert_eq!(result_part1, 3423279);
 }
 
 /**
@@ -42,7 +33,7 @@ fn fuel_requirement_for_module(module_mass: &str) -> i32 {
 /**
  * Loop through lines on input01 data and gather the total requirement from sum of each.
  */
-fn calculate_part1(input : String) -> i32 {
+fn solve_part1(input : String) -> i32 {
     let mut total = 0;
 
     for line in input.lines() {
