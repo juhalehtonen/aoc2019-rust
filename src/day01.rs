@@ -13,7 +13,7 @@
  */
 pub fn solve(input : String) {
     let result_part1 = solve_part1(input);
-    println!("Part 1 result is {}", result_part1);
+    println!("Day 1 Part 1 result is {}", result_part1);
     assert_eq!(result_part1, 3423279);
 }
 
@@ -38,7 +38,7 @@ fn solve_part1(input : String) -> i32 {
 
     for line in input.lines() {
         let requirement = fuel_requirement_for_module(line);
-        println!("{}", requirement);
+        //println!("{}", requirement);
         total = total + requirement;
     }
 
